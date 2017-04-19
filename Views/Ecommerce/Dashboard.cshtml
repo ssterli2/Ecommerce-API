@@ -1,0 +1,29 @@
+<html>
+    <head>
+       <title>Dashboard</title>
+    </head>
+    <body>
+        <a href='@Url.Action("Index", "Ecommerce")'>Dashboard</a>
+         <a href='@Url.Action("Products", "Ecommerce", new { page = 1 })'>Products</a>
+        <a href='@Url.Action("Orders", "Ecommerce")'>Orders</a>
+        <a href='@Url.Action("Customers", "Ecommerce")'>Customers</a>
+        <a href='@Url.Action("Logout", "Account")'>Logoff</a>
+         @foreach (var prod in @ViewBag.Products)
+        {
+            <div>
+                <p>@prod.Name</p>
+                <p>@prod.Quantity left</p>
+            </div>
+        }
+        <h2>Recent Orders</h2>
+        @foreach (var order in @ViewBag.Orders)
+        {
+                <p>@order.User.FirstName purchased @order.Quantity @order.Product (@order.CreatedAt ago)</p>
+        }
+        <h2>New Customers</h2>
+        @foreach (var user in @ViewBag.Users)
+        {
+                <p>@user.FirstName @user.LastName joined the store. (@user.CreatedAt ago)</p>
+        }
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Product</title>
+</head>
+<body>
+    <a href='@Url.Action("Index", "Ecommerce")'>Dashboard</a>
+    <a href='@Url.Action("Products", "Ecommerce", new { page = 1 })'>Products</a>
+    <a href='@Url.Action("Orders", "Ecommerce")'>Orders</a>
+    <a href='@Url.Action("Customers", "Ecommerce")'>Customers</a>
+    <a href='@Url.Action("Logout", "Account")'>Logoff</a>
+    <p>@ViewBag.response</p>
+    <form action="@Url.Action("Search")" method='POST'>
+        <input type='text' name='Search'>
+        <input type="submit" value="Search">
+    </form>
+    @if (@ViewBag.SearchProducts != null)
+    {
+         <h3>Search Results</h3>
+        @foreach (var prod in @ViewBag.SearchProducts)
+        {
+            <div>
+                <p>@prod.Name</p>
+                <p>@prod.Quantity</p>
+            </div>
+        }
+    }
+  <h1>Add a new Product</h1>
+  <p>@ViewBag.errors</p>
+  <form action="@Url.Action("MakeProduct")" method='POST'>
+        Name: <input type='text' name='Name'>
+        Description: <textarea  name='Description'></textarea>
+        Quantity: <input type='number' name='Quantity'>
+    <input type="submit" value="Create Product">
+  </form>
+  @if (@ViewBag.Products != null)
+  {
+     @foreach (var prod in @ViewBag.Products)
+    {
+        <div>
+            <p>@prod.Name</p>
+            <p>@prod.Quantity</p>
+        </div>
+
+    }
+    <a href='@Url.Action("Products", "Ecommerce", new { page = @ViewBag.next})'>Show More</a>
+  }
+</body>
+</html>

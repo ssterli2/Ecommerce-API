@@ -1,0 +1,24 @@
+<html>
+    <head>
+       <title>Register</title>
+    </head>
+    <body>
+        <h3>Register</h3>
+        <p>@Html.ValidationSummary()</p>
+        @model Ecomm.Models.RegisterViewModel
+        <form asp-controller="Account" asp-action="Create" method="post">
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName"/>
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName"/>
+            <label asp-for="Email"></label>
+            <input asp-for="Email"/>
+            <label asp-for="Password"></label>
+            <input asp-for="Password"/>
+            <label asp-for="PasswordConfirmation"></label>
+            <input type="password" asp-for="PasswordConfirmation"/>
+            <button type="submit">Create new User</button>
+        </form>
+        <a href="login">Already have an account? Login</a>
+    </body>
+</html>
