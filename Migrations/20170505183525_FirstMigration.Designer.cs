@@ -8,9 +8,10 @@ using Ecomm.Models;
 namespace Ecommerce.Migrations
 {
     [DbContext(typeof(EcommContext))]
-    partial class EcommContextModelSnapshot : ModelSnapshot
+    [Migration("20170505183525_FirstMigration")]
+    partial class FirstMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1");

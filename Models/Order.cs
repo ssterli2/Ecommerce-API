@@ -1,21 +1,19 @@
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Collections.Generic;
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace Ecomm.Models
 {
     public class Order : BaseEntity
     {
         public int OrderId { get; set; }
-        
         public DateTime CreatedAt { get; set; }
-
-        public int Quantity { get; set; }
-
-        public Product Product { get; set; }
-
-        public User User { get; set; }
+        public int UserId { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
+ 
+        public Order()
+        {
+            OrderItems = new List<OrderItem>();
+        }
     }
 }

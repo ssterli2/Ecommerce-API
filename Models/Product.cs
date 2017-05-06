@@ -1,8 +1,6 @@
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Collections.Generic;
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace Ecomm.Models
 {
@@ -16,11 +14,12 @@ namespace Ecomm.Models
 
         public int Quantity { get; set; }
 
-        public List<Order> Orders { get; set; }
+        [JsonIgnore]
+        public List<OrderItem> OrderItems { get; set; }
  
         public Product()
         {
-            Orders = new List<Order>();
+            OrderItems = new List<OrderItem>();
         }
     }
 }

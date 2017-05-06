@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Ecomm.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Ecomm
 {
@@ -25,9 +24,6 @@ namespace Ecomm
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<EcommContext>(options => options.UseNpgsql(Configuration["DBInfo:ConnectionString"]));
-            services.AddIdentity<User, IdentityRole>()
-                .AddEntityFrameworkStores<EcommContext>()
-                .AddDefaultTokenProviders();
 
             services.AddSession();
             services.AddMvc();
@@ -36,7 +32,6 @@ namespace Ecomm
         public void Configure(IApplicationBuilder App, ILoggerFactory LoggerFactory)
         {
             LoggerFactory.AddConsole();
-            App.UseIdentity();
             App.UseDeveloperExceptionPage();
             App.UseStaticFiles();
             App.UseSession();
